@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 
 from qdrant_client import QdrantClient
@@ -40,7 +41,7 @@ def index_text(text: str, doc_type: str, source: str = "unknown") -> int:
         # Point struct to qdrant
         points.append(
             PointStruct(
-                id=i,
+                id=str(uuid.uuid4()),
                 vector=embedded_chunk,
                 payload={
                     "text": chunk,

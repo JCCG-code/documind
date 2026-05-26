@@ -3,5 +3,5 @@ from pydantic import BaseModel
 
 class Document(BaseModel):
     filename: str
-    filepath: str
+    content_type: str
     size: int
