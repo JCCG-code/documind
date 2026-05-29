@@ -1,10 +1,7 @@
-import hashlib
-
 from fastapi import APIRouter, HTTPException, UploadFile
 
 from documind.ingestion.file_dispatcher import load_file
 from documind.models.document import Document
-from documind.rag.indexer import index_text
 
 # API Router Init
 router = APIRouter(prefix="/documents", tags=["documents"])

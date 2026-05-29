@@ -1,3 +1,4 @@
+import re
 import uuid
 from datetime import datetime
 
@@ -35,23 +36,40 @@ def index_text(text: str, doc_type: str, source: str = "unknown") -> int:
     points: list[PointStruct] = []
     # Generates chunks
     chunks_text = chunk_text(text)
-    for i, chunk in enumerate(chunks_text):
-        # Generates embedding
-        embedded_chunk = list(embed(chunk))
-        # Point struct to qdrant
-        points.append(
-            PointStruct(
-                id=str(uuid.uuid4()),
-                vector=embedded_chunk,
-                payload={
-                    "text": chunk,
-                    "source": source,
-                    "doc_type": doc_type,
-                    "indexed_at": datetime.now(),
-                },
+    for chunk in chunks_text:
+        # Check clean chunk
+        if valid_chunk(chunk):
+            # Generates embedding
+            embedded_chunk = list(embed(chunk))
+            # Point struct to qdrant
+            points.append(
+                PointStruct(
+                    id=str(uuid.uuid4()),
+                    vector=embedded_chunk,
+                    payload={
+                        "text": chunk,
+                        "source": source,
+                        "doc_type": doc_type,
+                        "indexed_at": datetime.now(),
+                    },
+                )
             )
-        )
     # Insert points
     client.upsert(COLLECTION_NAME, points=points)
     # Return numer of indexed points
     return len(points)
+
+
+def valid_chunk(chunk: str) -> bool:
+    value = chunk.strip()
+    if re.search(r"[A-Za-z0-9+/=]{200,}", value):
+        return False
+    elif value == "":
+        return False
+    elif len(value) < 50:
+        return False
+    elif re.search(r"^https?://\S+$", chunk):
+        return False
+    elif re.fullmatch(r"[-=*]{3,}", chunk):
+        return False
+    return True
