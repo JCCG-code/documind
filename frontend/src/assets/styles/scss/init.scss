@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'primeicons/primeicons.css';
+
+// Utils
+body {
+  min-height: 100vh;
+  color: $color-text;
+  background: $color-background;
+  transition: 0.5s;
+  font-family: $font;
+  font-weight: 300;
+  font-size: 14px;
+}
+button {
+  cursor: pointer;
+}
