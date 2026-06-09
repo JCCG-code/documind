@@ -7,6 +7,7 @@ from fastapi import HTTPException, UploadFile
 from documind.ingestion.md_loader import markdown_loader
 from documind.ingestion.pdf_loader import pdf_loader
 from documind.ingestion.txt_loader import plain_loader
+from documind.models.document import Document
 from documind.rag.indexer import index_text
 
 INDEXED_FILE = Path("indexed_files.json")
@@ -41,9 +42,16 @@ async def load_file(file: UploadFile) -> dict:
                 text=text, doc_type=file.content_type, source=file.filename
             )
             # Save or update indexed_files
-            save_indexed(filename=file.filename, hash=hash)
+            save_indexed(
+                Document(
+                    filename=file.filename,
+                    hash=hash,
+                    content_type=file.content_type,
+                    size=file.size,
+                )
+            )
             return {"status": "OK", "points": points}
-        return {"status": "FAILED", "details": "File not detected"}
+        return {"detail": "File not detected"}
     except HTTPException:
         raise
     except Exception as e:
@@ -54,17 +62,21 @@ async def load_file(file: UploadFile) -> dict:
         await file.close()
 
 
-def load_indexed() -> dict:
+def load_indexed() -> list[Document]:
     if not INDEXED_FILE.exists():
-        return {}
-    return json.loads(INDEXED_FILE.read_text())
+        return []
+    raw = json.loads(INDEXED_FILE.read_text())
+    return [Document(**d) for d in raw]
 
 
 def is_indexed(hash: str) -> bool:
-    return hash in load_indexed().values()
+    doc_exists = next((d for d in load_indexed() if d.hash == hash), None)
+    if doc_exists is not None:
+        return True
+    else:
+        return False
 
 
-def save_indexed(filename: str, hash: str) -> None:
-    data = load_indexed()
-    data[filename] = hash
-    INDEXED_FILE.write_text(json.dumps(data, indent=2))
+def save_indexed(document: Document) -> None:
+    data = load_indexed() + [document]
+    INDEXED_FILE.write_text(json.dumps([d.model_dump() for d in data], indent=2))

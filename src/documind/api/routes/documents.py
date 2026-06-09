@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, UploadFile
 
-from documind.ingestion.file_dispatcher import load_file
+from documind.ingestion.file_dispatcher import load_file, load_indexed
 from documind.models.document import Document
 
 # API Router Init
@@ -9,7 +9,7 @@ router = APIRouter(prefix="/documents", tags=["documents"])
 
 @router.get("")
 def get_documents() -> list[Document] | None:
-    pass
+    return load_indexed()
 
 
 @router.post("/ingest")

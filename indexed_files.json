@@ -1,4 +1,26 @@
-{
-  "fastapi.md": "79b9b396e86002703eb169af05abceb8959e5f783a126fd953749eb2b4b69bf1",
-  "Attention-is-all-you-need.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
-}
+[
+  {
+    "filename": "Attention-is-all-you-need.pdf",
+    "hash": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "content_type": "application/pdf",
+    "size": 2215244
+  },
+  {
+    "filename": "fastapi.md",
+    "hash": "79b9b396e86002703eb169af05abceb8959e5f783a126fd953749eb2b4b69bf1",
+    "content_type": "text/markdown",
+    "size": 460235
+  },
+  {
+    "filename": "pydantic.md",
+    "hash": "d82589ca9e15f820ca5643292d8d2f5078a30ec64dbdea2e5f4c8b97b3ebe1c4",
+    "content_type": "text/markdown",
+    "size": 462487
+  },
+  {
+    "filename": "ragas.md",
+    "hash": "35fca3ec2a5b974f8d6e17a3d95f1b2f00db6386e3d1e8cfac4779ba394808aa",
+    "content_type": "text/markdown",
+    "size": 434584
+  }
+]
