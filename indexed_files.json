@@ -22,5 +22,17 @@
     "hash": "35fca3ec2a5b974f8d6e17a3d95f1b2f00db6386e3d1e8cfac4779ba394808aa",
     "content_type": "text/markdown",
     "size": 434584
+  },
+  {
+    "filename": "qdrant-client.md",
+    "hash": "23e6d098359810f0259c3002afb2f5bfbec55c065783cf3a8353b40595b04b5b",
+    "content_type": "text/markdown",
+    "size": 99585
+  },
+  {
+    "filename": "The_Great_Gatsby.txt",
+    "hash": "3865269180ab760c1ddcae0bd540c8c2ce2824fc8d7a556721f1ab8d68b3434b",
+    "content_type": "text/plain",
+    "size": 299767
   }
 ]

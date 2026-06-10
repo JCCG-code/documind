@@ -1,21 +1,64 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@300;400;500&display=swap");
 @import 'primeicons/primeicons.css';
+html,
+body,
+#app {
+  height: 100%;
+}
+
 body {
-  min-height: 100vh;
-  color: #ececec;
-  background: #1b1b1b;
-  transition: 0.5s;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
+  color: #fafafa;
+  background: #09090b;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
   font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
   cursor: pointer;
+  font-family: inherit;
 }
 
-h1 {
-  font-weight: 600;
-  font-size: 1.5rem;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+::-moz-selection {
+  background: rgba(99, 102, 241, 0.25);
+  color: #fafafa;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.25);
+  color: #fafafa;
+}
+
+.p-toast {
+  font-family: "DM Sans", system-ui, sans-serif !important;
 }/*# sourceMappingURL=init.css.map */

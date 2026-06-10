@@ -1,15 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
-// FONTS
-$font: 'Poppins', sans-serif;
-$font-main-title: 'Merienda', cursive;
+// Typography
+$font-display: 'Cormorant Garamond', Georgia, serif;
+$font-body: 'DM Sans', system-ui, sans-serif;
+$font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
-// COLORS
-$color-text: #ececec;
-$color-background: #1b1b1b;
-$color-background-shadow: #333333;
-$color-secondary: #ad5757;
+// Legacy aliases
+$font: $font-body;
+$font-main-title: $font-display;
 
-// BREAKPOINTS
+// Color system — Obsidian Intelligence
+$c-bg: #09090b;
+$c-surface: #111113;
+$c-raised: #18181b;
+$c-hover: #1f1f23;
+$c-border: #27272a;
+$c-border-s: #1c1c1f;
+
+$c-accent: #818cf8;
+$c-accent-hi: #6366f1;
+$c-accent-lo: rgba(99, 102, 241, 0.1);
+$c-accent-gl: rgba(129, 140, 248, 0.18);
+
+$c-text-1: #fafafa;
+$c-text-2: #a1a1aa;
+$c-text-3: #52525b;
+
+$c-success: #4ade80;
+$c-error: #f87171;
+$c-warn: #fb923c;
+
+// Legacy aliases (consumed by init.scss / PrimeVue config)
+$color-text: $c-text-1;
+$color-background: $c-bg;
+$color-background-shadow: $c-raised;
+$color-secondary: $c-accent;
+
+// Layout
+$sidebar-w: 240px;
+$r-sm: 6px;
+$r-md: 10px;
+$r-lg: 16px;
+$r-xl: 24px;
+
+// Breakpoints
 $desktop-breakpoint: 1024px;

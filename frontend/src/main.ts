@@ -7,6 +7,10 @@ import ToastService from 'primevue/toastservice'
 import { createApp } from 'vue'
 import VueAxios from 'vue-axios'
 
+// Global styles
+import '@/assets/styles/css/reset.css'
+import '@/assets/styles/scss/init.scss'
+
 // Local files
 import App from './App.vue'
 import router from './router'

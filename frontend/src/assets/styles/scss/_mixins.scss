@@ -1,0 +1,75 @@
+@use 'variables' as *;
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+
+@mixin page-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Typography ───────────────────────────────────────────────────────────────
+
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin display-font {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@mixin mono-font {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+// ─── Components ───────────────────────────────────────────────────────────────
+
+@mixin badge-color($fg) {
+  color: $fg;
+  background: rgba($fg, 0.11);
+}
+
+@mixin icon-box($fg, $size: 36px, $radius: 8px) {
+  width: $size;
+  height: $size;
+  border-radius: $radius;
+  border: 1px solid rgba($fg, 0.2);
+  background: rgba($fg, 0.1);
+  color: $fg;
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+@mixin card-surface {
+  background: $c-surface;
+  border: 1px solid $c-border-s;
+  border-radius: $r-md;
+  transition: border-color 0.15s ease, background 0.15s ease;
+
+  &:hover {
+    border-color: $c-border;
+    background: $c-raised;
+  }
+}
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+
+@mixin spin-animation($duration: 0.9s) {
+  animation: spin $duration linear infinite;
+}

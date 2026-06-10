@@ -1,3 +1,4 @@
+import json
 from collections.abc import AsyncIterable
 
 import ollama
@@ -21,7 +22,7 @@ async def stream_response(
         async for chunk in stream(
             user_message=message, rag_results=rag_results, model=model, think=True
         ):
-            yield f"data: {chunk}\n\n"
+            yield f"data: {json.dumps(chunk)}\n\n"
     except ConnectionError:
         yield "data: [ERROR] Connection error\n\n"
     except ollama.ResponseError as e:
@@ -58,7 +59,7 @@ async def query_stream(request: QueryRequest):
     if not results_found.found:
 
         async def no_results():
-            yield "data: No relevant information found for your query\n\n"
+            yield "data: 'No relevant information found for your query'\n\n"
             yield "data: [DONE]\n\n"
 
         return StreamingResponse(no_results(), media_type="text/event-stream")
